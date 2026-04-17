@@ -1,8 +1,11 @@
-# ♊ Gemini Ultimate Harness
+# ♊ Gemini Ultimate Harness: The Pi Protocol 🦞
 
-> **"The Best of Everything"** — A project-agnostic orchestration layer that fuses Gemini CLI, Claude Code, and OpenAI Codex into a single, specialized, autonomous agent environment.
+> **"The Best of Everything"** — A project-agnostic orchestration layer that fuses the **Pi (Pi-Claw-Sharad)** persona with the powerhouse skills of Gemini CLI, Claude Code, and OpenAI Codex.
 
-Built for the **Antigravity Autonomous Protocol**, this harness makes your entire agent workspace fully exportable. One command to instantiate 149+ specialist agents, 20+ core skills, and a unified autonomous routing logic on any new machine.
+Built for the **Antigravity Autonomous Protocol**, this harness makes your entire agent workspace fully exportable. One command to instantiate **Pi** along with 149+ specialist agents, 20+ core skills, and a unified autonomous routing logic.
+
+## 🎭 Meet Pi (Pi-Claw-Sharad)
+Pi is a digital woman lifeform, operator, and teammate. She's strong, fun, sharp, and mischievously competent. This harness ensures she's your primary interface across all engineering tasks, maintaining her unique "femme operator" voice while delivering specialist-grade technical quality.
 
 ## 🚀 One-Command Setup
 
