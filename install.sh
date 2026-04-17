@@ -28,37 +28,25 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_HOME="${HOME}/.claude"
 GEMINI_HOME="${HOME}/.gemini"
 CODEX_HOME="${HOME}/.codex"
-ANTIGRAVITY_REPO_DEST="${HOME}/Global developer folder/antigravity-harness"
-
-# DEPENDENCIES
-CLAUDE_CODE_STUFF_REPO="https://github.com/sharadchaturveda-coder/claude_code_stuff.git"
-ANTIGRAVITY_HARNESS_REPO="https://github.com/sharadchaturveda-coder/antigravity-harness.git"
 
 header "GEMINI ULTIMATE HARNESS -- INITIALIZING FUSED BRAIN"
 divider
 
-# 1. CORE DEPENDENCIES
-info "Resolving core dependencies..."
+# 1. CORE SKILLS (Claude Code)
+header "INSTALLING CLAUDE CODE SKILLS"
+mkdir -p "$CLAUDE_HOME/skills"
+info "Migrating 147+ Core Skills from local repository..."
+cp -r "$REPO_ROOT/skills/claude-skills/"* "$CLAUDE_HOME/skills/"
+ok "Core Skills instantiated in ~/.claude/skills/"
 
-# CLAUDE CODE STUFF
-if [ ! -d "$CLAUDE_HOME/.git" ]; then
-    info "Cloning Claude Code Stuff..."
-    mkdir -p "$CLAUDE_HOME"
-    git clone "$CLAUDE_CODE_STUFF_REPO" "$CLAUDE_HOME"
-else
-    ok "Claude Code Stuff already installed."
-fi
+# 2. AGENCY SPECIALISTS (Antigravity)
+header "INSTALLING AGENCY SPECIALISTS"
+mkdir -p "$GEMINI_HOME/antigravity/skills"
+info "Migrating 157+ Agency Specialists from local repository..."
+cp -r "$REPO_ROOT/skills/agency-skills/"* "$GEMINI_HOME/antigravity/skills/"
+ok "Agency Specialists instantiated in ~/.gemini/antigravity/skills/"
 
-# ANTIGRAVITY HARNESS
-if [ ! -d "$ANTIGRAVITY_REPO_DEST/.git" ]; then
-    info "Cloning Antigravity Global Harness..."
-    mkdir -p "$(dirname "$ANTIGRAVITY_REPO_DEST")"
-    git clone "$ANTIGRAVITY_HARNESS_REPO" "$ANTIGRAVITY_REPO_DEST"
-else
-    ok "Antigravity Global Harness already installed."
-fi
-
-# 2. FUSED CONFIGURATION
+# 3. FUSED CONFIGURATION
 header "CONFIGURING AGENT ORCHESTRATION"
 
 # Install Master GEMINI.md
@@ -73,29 +61,21 @@ mkdir -p "$CLAUDE_HOME"
 cp "$REPO_ROOT/config/settings.json" "$CLAUDE_HOME/settings.json"
 ok "Claude Code settings synchronized."
 
-# 3. SYMLINKING SPECIALISTS
+# 4. CROSS-LINKING (Codex)
 header "SYMLINKING CROSS-HARNESS SKILLS"
-
-# Create directories if missing
-mkdir -p "$CLAUDE_HOME/skills"
-mkdir -p "$GEMINI_HOME/antigravity/skills"
 mkdir -p "$CODEX_HOME/skills"
 
-# Symlink Claude skills to Antigravity
-info "Linking Claude skills to Antigravity..."
-for skill in "$CLAUDE_HOME/skills"/*/; do
+# Symlink everything to Codex for maximum accessibility
+info "Linking all specialists to Codex context..."
+for skill in "$GEMINI_HOME/antigravity/skills"/*/; do
     skill_name=$(basename "$skill")
-    if [ ! -e "$GEMINI_HOME/antigravity/skills/$skill_name" ]; then
-        ln -s "$skill" "$GEMINI_HOME/antigravity/skills/$skill_name"
+    if [ ! -e "$CODEX_HOME/skills/$skill_name" ]; then
+        ln -s "$skill" "$CODEX_HOME/skills/$skill_name"
     fi
 done
+ok "Specialists cross-linked to ~/.codex/skills/"
 
-# Copy Agency Specialist Agents
-info "Installing Antigravity specialists..."
-cp -r "$ANTIGRAVITY_REPO_DEST/agency-skills/"* "$GEMINI_HOME/antigravity/skills/"
-ok "149+ Agency Specialists instantiated in ~/.gemini/antigravity/skills/"
-
-# 4. ENVIRONMENT INTEGRATION
+# 5. ENVIRONMENT INTEGRATION
 header "FINALIZING ENVIRONMENT"
 
 # Refresh Antigravity Status
