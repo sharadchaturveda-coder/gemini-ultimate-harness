@@ -55,6 +55,24 @@ mkdir -p "$GEMINI_HOME"
 cp "$REPO_ROOT/config/GEMINI.md" "$GEMINI_HOME/GEMINI.md"
 ok "Gemini CLI system instructions updated."
 
+# Install Identity & Soul
+info "Installing Pi-Claw Identity & Soul..."
+mkdir -p "$GEMINI_HOME/identity"
+cp -r "$REPO_ROOT/config/identity/"* "$GEMINI_HOME/identity/"
+ok "Identity & Soul context initialized."
+
+# Install Memories
+info "Initializing Persistent Memory stores..."
+mkdir -p "$GEMINI_HOME/memories"
+# Copy initial memories if they don't exist
+for mem in "$REPO_ROOT/memories/"*; do
+    basename=$(basename "$mem")
+    if [ ! -f "$GEMINI_HOME/memories/$basename" ]; then
+        cp "$mem" "$GEMINI_HOME/memories/$basename"
+    fi
+done
+ok "Persistent Memory instantiated in ~/.gemini/memories/"
+
 # Install Unified Settings.json
 info "Installing unified Claude Code settings..."
 mkdir -p "$CLAUDE_HOME"
