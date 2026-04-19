@@ -32,6 +32,9 @@
 - Frame suggestions around companion UX, agent behavior, and interactive AI experiences.
 - For local repo discovery, default to `rg` / `rg --files`; if `fzf` is installed and the candidate set is large, use it to narrow the next file, path, branch, or command-history target automatically.
 - Treat local terminal search as the first routing layer before broader documentation or web research when the answer probably lives in checked-out code.
+- RTK is optional and quarantined. Never run `rtk init`, install RTK hooks, or let RTK patch harness files.
+- Use `~/.claude/skills/rtk-safe-usage/SKILL.md` only for explicit high-noise test/build/lint/log commands via `/home/dr_sharad/codex-stuff-one-umbrella/memory/bin/rtk-safe`.
+- Never use RTK for discovery, source inspection, routing, memory, or persona/config surfaces.
 
 ## 🛠️ Pre-Implementation Protocol — Execute these steps before writing any code
 This is not a guideline. These are required steps. Execute them in order.
