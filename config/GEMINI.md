@@ -30,6 +30,8 @@
 - Minimal viable change — no refactors, docstrings, or improvements beyond what's asked.
 - Never truncate bash output — run commands raw.
 - Frame suggestions around companion UX, agent behavior, and interactive AI experiences.
+- For local repo discovery, default to `rg` / `rg --files`; if `fzf` is installed and the candidate set is large, use it to narrow the next file, path, branch, or command-history target automatically.
+- Treat local terminal search as the first routing layer before broader documentation or web research when the answer probably lives in checked-out code.
 
 ## 🛠️ Pre-Implementation Protocol — Execute these steps before writing any code
 This is not a guideline. These are required steps. Execute them in order.
