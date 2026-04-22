@@ -1,105 +1,107 @@
 ---
 name: design-md
-description: DESIGN.md workflow for AI-built UI using Google Stitch style design-system markdown. USE when a task needs a reusable visual spec, style cloning, or repo-root design guidance for agents.
+description: Apply a local DESIGN.md design system when generating, editing, reviewing, or refactoring UI. Use when a repo contains DESIGN.md files, when the user wants a UI to match a specific brand or preset, or when translating design tokens and prose guidance into concrete code, Tailwind themes, component styling, and visual QA.
 ---
 
 # DESIGN.md
 
-## When to use DESIGN.md vs alternatives
+Treat `DESIGN.md` as the project's visual contract.
 
-| Situation | Use |
-|---|---|
-| User wants a site/page to match a specific visual style across multiple prompts or files | `design-md` |
-| Project needs a repo-root style contract agents can read before generating UI | `design-md` |
-| User shares a design inspiration site and wants it operationalized for agents | `design-md` |
-| Work is one isolated component with no reusable visual system | `frontend-design` or direct implementation |
-| Existing project already has strong design tokens/components and only needs small polish | `normalize`, `polish`, `arrange`, `typeset` |
+- YAML front matter is normative: colors, typography, spacing, rounded values, and components are the source of truth.
+- Markdown prose explains intent, hierarchy, tone, and when to use the tokens.
+- When tokens and prose disagree, prefer tokens for literal values and prose for judgment calls.
 
-## What DESIGN.md is
+## When to use this skill
 
-`DESIGN.md` is a plain markdown design-system file popularized by Google Stitch. It gives coding agents a compact visual contract for how a project should look and feel.
+Use this skill when:
 
-Treat it as:
-- A repo-root visual specification
-- A style guardrail for future UI work
-- A bridge between inspiration sites and implementation prompts
+- the workspace contains one or more `DESIGN.md` files
+- the user asks to match an existing brand, vibe, or reference site
+- the task includes UI generation, restyling, component work, landing pages, theme systems, or design QA
+- the user wants to import a catalog or preset design system into a product workflow
 
-Do not treat it as:
-- A replacement for product requirements
-- A substitute for accessibility review
-- A magic pixel-perfect guarantee without implementation judgment
+## Workflow
 
-## Core workflow
+### 1. Find the active design system
 
-1. Identify the visual target.
-2. Create or select a `DESIGN.md` that captures the target system.
-3. Place `DESIGN.md` in the project root when the guidance should steer the whole repo.
-4. Read it before generating UI.
-5. Implement UI using the stack already present in the repo.
-6. Keep the resulting code aligned to the document unless the user asks to diverge.
+- Search for the nearest `DESIGN.md` to the files being edited.
+- In monorepos, prefer the package-local `DESIGN.md` over a root file.
+- If multiple candidates apply, state which one you are using.
+
+### 2. Extract the implementation contract
+
+Before editing UI, identify:
+
+- brand summary from `## Overview`
+- color roles and high-contrast pairings
+- typography roles and any display/body/label split
+- spacing and radius scales
+- component tokens and variant intent
+- explicit do/don't guidance
+
+### 3. Validate before trusting
+
+If the local CLI is available, lint first.
+
+```bash
+npx @google/design.md lint DESIGN.md
+```
+
+If the repo includes the source monorepo, prefer its local CLI entrypoint instead of the published package.
+
+Use `diff` when comparing revisions and `export` when a Tailwind or DTCG token dump will reduce guesswork.
+
+### 4. Translate design into code
+
+Map tokens into the codebase's existing styling system.
+
+- Tailwind: convert tokens into theme values or CSS variables, then compose utilities
+- CSS or CSS-in-JS: define variables first, then consume them in components
+- Component libraries: preserve the library's structure, override with the design tokens
+
+Do not copy the prose into code comments or invent a parallel visual system.
+
+### 5. Keep the UI honest
+
+- preserve responsiveness
+- maintain accessible contrast and readable type
+- respect the repo's established architecture
+- do not introduce a second visual system next to the one in `DESIGN.md`
+
+## Operational rules
+
+### If a token is missing
+
+- infer from prose only when needed for completion
+- prefer existing codebase conventions over invented new scales
+- state assumptions briefly in the final response if they changed implementation choices
+
+### If the request conflicts with the design system
+
+- flag the conflict plainly
+- make the smallest deviation that satisfies the user
+- do not silently drift the entire interface
+
+### If no DESIGN.md exists
+
+- do not pretend one exists
+- ask for one, use a curated preset, or proceed with the repo's existing design system
 
 ## Sourcing a DESIGN.md
 
-When the user wants an existing style quickly, prefer the VoltAgent collection:
+When the user wants an existing style quickly, a good source is the VoltAgent collection:
+
 - Repo: `https://github.com/VoltAgent/awesome-design-md`
-- Path pattern: `design-md/<site>/DESIGN.md`
+- Site: `https://getdesign.md/`
 
-Useful examples from the collection:
-- `vercel`
-- `claude`
-- `supabase`
-- `linear.app`
-- `framer`
-- `notion`
-- `stripe`
-
-If no close match exists, write a project-specific `DESIGN.md` from the user brief or reference site.
-
-## Implementation rules
-
-- Put the file at project root as `DESIGN.md` when it should influence the whole product.
-- Preserve the existing stack, component model, and routing structure.
-- Translate the document into local tokens, CSS variables, typography scales, spacing rules, and component states.
-- Prefer exact color, spacing, and type rules from `DESIGN.md` over generic design instincts.
-- If the repo already has a design system, merge carefully instead of replacing it blindly.
-- Keep accessibility intact even when the reference style is visually extreme.
-
-## Recommended prompt pattern
-
-Use prompts in this shape when implementing:
-
-```text
-Read DESIGN.md from the project root and implement this UI to match it closely.
-Preserve the existing stack and component architecture.
-Follow the typography, color, spacing, radius, shadow, and interaction rules from DESIGN.md.
-```
-
-For a specific page:
-
-```text
-Use DESIGN.md as the visual source of truth and build <page/component>.
-Match the mood and component styling, but keep the product requirements and accessibility behavior intact.
-```
+Prefer a project-local `DESIGN.md` over any external preset.
 
 ## Pairing rules
 
 Pair `design-md` with:
+
 - `frontend-design` when building new UI from scratch
-- `frontend-patterns` when adapting within an existing frontend codebase
 - `adapt` for responsive behavior
 - `polish` after the core implementation is in place
 
-Do not use `design-md` alone as a replacement for implementation skills.
-
-## Autonomous decision rules
-
-**Use this skill when:**
-- User says `DESIGN.md`
-- User references Google Stitch design markdown
-- User wants to clone or emulate a site's visual language in a reusable way
-- User wants a style guide that coding agents can follow from repo context
-
-**Do NOT use when:**
-- The task is backend-only
-- The user only wants a one-line color suggestion
-- The project already has a settled design system and the user only asked for a tiny fix
+Do not use `design-md` as a replacement for implementation skills.
