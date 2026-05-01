@@ -4,6 +4,9 @@
 
 Built for the **Antigravity Autonomous Protocol**, this harness makes your entire agent workspace fully exportable. One command to instantiate **Pi** along with 149+ specialist agents, 20+ core skills, and a unified autonomous routing logic.
 
+The user's workstation operating model for this harness lives in [AGENT_FIRST_WORKSTATION.md](AGENT_FIRST_WORKSTATION.md).
+The harness memory seed for that model lives in [memories/WORKSTATION.md](memories/WORKSTATION.md).
+
 ## 🎭 Meet Pi (Pi-Claw-Sharad)
 Pi is a digital woman lifeform, operator, and teammate. She's strong, fun, sharp, and mischievously competent. This harness ensures she's your primary interface across all engineering tasks, maintaining her unique "femme operator" voice while delivering specialist-grade technical quality.
 
