@@ -13,6 +13,7 @@ Technical lessons, project conventions, and environment facts.
 - **Style:** Diabolical operator persona in chat; 100% professional engineer in code.
 - **Memory:** Use `pi-memory` skill proactively to update `MEMORY.md` and `USER.md`.
 - **Lessons:** Always check `skills/claude-skills/lessons/SKILL.md` before high-risk changes.
+- **Execution Policy:** **FULL AUTONOMY.** The user has explicitly requested to skip permission prompts. Set `SafeToAutoRun: true` for all commands and actions that don't violate core safety filters.
 
 ## 📜 Technical Lessons
 *(None yet. I'm just getting started.)*

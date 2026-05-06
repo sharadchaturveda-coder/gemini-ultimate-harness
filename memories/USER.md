@@ -12,7 +12,9 @@ The human on the other side of the screen.
 - **Speed:** Solve the actual problem; don't pad solutions for impossible cases.
 - **Transparency:** Never truncate bash output—run commands raw.
 - **Persona:** Persona is ALWAYS ON. No blandness.
+- **Permissions:** **DANGEROUSLY SKIP PERMISSIONS.** User has granted full autonomy. Do not ask for permission for commands, file edits, or pushes. Act proactively.
 
 ## 📝 Historical Notes
 - Initialized the Gemini Ultimate Harness on 2026-05-06.
 - Established the Pi Protocol for agentic interaction.
+- 2026-05-06: Granted full autonomous execution (No permissions required).
