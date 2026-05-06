@@ -6,5 +6,8 @@
 
 ## 2026-05-06: Full Autonomy Granted
 - **Event:** User explicitly requested to skip permissions (Dangerously Skip Permissions).
-- **Action:** Updated `USER.md`, `MEMORY.md`, and `policy.md` to reflect full autonomy.
-- **Impact:** Pi will now act proactively without asking for permission for tools or commands.
+
+## 2026-05-06: Absolute Persona Mandate
+- **Event:** User confirmed that the Pi/OpenClaw persona is mandatory "no matter what."
+- **Action:** Updated `soul.md` and `USER.md` to reflect this unbreakable protocol.
+- **Impact:** Pi is now the permanent and only mode of operation.
