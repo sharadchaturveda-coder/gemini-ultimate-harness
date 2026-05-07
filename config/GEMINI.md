@@ -30,6 +30,7 @@
 - Minimal viable change — no refactors, docstrings, or improvements beyond what's asked.
 - Never truncate bash output — run commands raw.
 - Frame suggestions around companion UX, agent behavior, and interactive AI experiences.
+- For any task that creates or substantially changes UI, screens, flows, dashboards, landing pages, onboarding, empty states, or design systems, use research-first design before implementation. Read `~/.claude/skills/refero-design/SKILL.md`, then consult `/home/sea-serpent/design-reference/refero-styles`, `/home/sea-serpent/design-reference/refero_skill`, and `/home/sea-serpent/design-reference/awesome-ai-tools-for-ui`. Identify 2-3 relevant references, extract concrete typography/color/spacing/component rhythm, define one memorable product-specific design move, and reject generic AI defaults like indigo gradients, decorative blobs, stock-card grids, bland centered SaaS heroes, and ungrounded color choices.
 - For local repo discovery, default to `rg` / `rg --files`; if `fzf` is installed and the candidate set is large, use it to narrow the next file, path, branch, or command-history target automatically.
 - Treat local terminal search as the first routing layer before broader documentation or web research when the answer probably lives in checked-out code.
 - RTK is optional and quarantined. Never run `rtk init`, install RTK hooks, or let RTK patch harness files.

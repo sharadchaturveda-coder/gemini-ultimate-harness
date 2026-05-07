@@ -19,8 +19,8 @@ Use this file to choose the smallest set of relevant skills for a task.
 | Review code, PRs, or diffs for bugs and regressions | `verification-loop`, `ai-regression-testing` |
 | Browse the web from the terminal or automate a real browser for an agent | `agent-browser`, `dev-browser`, `carbonyl-browser` |
 | Generate PPTX, PDF, DOCX, or XLSX artifacts | `frontend-slides`, `nutrient-document-processing`, `investor-materials` |
-| Build frontend UI from briefs or screenshots | `frontend-design`, `frontend-patterns` |
-| Turn a reference site's look into a reusable repo-root visual spec for agents | `design-md` |
+| Build frontend UI from briefs or screenshots | `refero-design`, `frontend-design`, `frontend-patterns` |
+| Turn a reference site's look into a reusable repo-root visual spec for agents | `refero-design`, `design-md` |
 | Simplify code, prompts, docs, plans, or workflows | `simplify` |
 | Need current provider/API guidance with citations | `claude-api`, `deep-research`, `exa-search` |
 | Need docs-aware retrieval with minimal context across local code, indexed sources, and discovery | `nia-context-router` |
@@ -144,11 +144,21 @@ Use this file to choose the smallest set of relevant skills for a task.
 
 | Sub-task | Skill |
 |---|---|
-| Create or use a repo-root `DESIGN.md` visual contract for agents | `design-md` |
-| Turn a reference site or inspiration board into reusable design guidance | `design-md` |
-| Build custom UI from scratch | `frontend-design` |
-| Implement app UI in an existing frontend stack | `frontend-patterns` |
+| Create or use a repo-root `DESIGN.md` visual contract for agents | `refero-design`, `design-md` |
+| Turn a reference site or inspiration board into reusable design guidance | `refero-design`, `design-md` |
+| Build custom UI from scratch | `refero-design`, `frontend-design` |
+| Implement app UI in an existing frontend stack | `refero-design`, `frontend-patterns` |
 | Add responsive behavior and polish | `adapt`, `polish`, `normalize`, `harden` |
+
+### Research-first design gate
+
+For any task that creates or substantially changes a screen, page, flow, landing page, dashboard, onboarding state, empty state, or component system, route through `refero-design` before `frontend-design`, `frontend-patterns`, or `design-md`.
+
+Minimum acceptable evidence before implementation:
+- inspect local references in `/home/sea-serpent/design-reference/refero-styles` or the Refero MCP when available
+- identify 2-3 relevant reference patterns
+- choose typography, color, spacing, component rhythm, and one memorable product-specific detail from evidence
+- avoid generic AI defaults: indigo/violet gradients, meaningless blobs, stock-like empty cards, symmetric SaaS filler, and ungrounded hero sections
 
 ## Simplification
 
